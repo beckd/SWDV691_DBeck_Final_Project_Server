@@ -1,0 +1,22 @@
+{
+  "name": "user-server",
+  "version": "0.0.1",
+  "engines": {
+    "node": "10.15.1",
+    "npm": "6.10.1"
+  },
+  "description": "User server using Mongoose",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "devDependencies": {
+    "body-parser": "1.18.3",
+    "cors": "2.8.4",
+    "express": "4.16.3",
+    "method-override": "2.3.10",
+    "mongoose": "^5.6.8",
+    "morgan": "^1.9.1"
+  }
+}
