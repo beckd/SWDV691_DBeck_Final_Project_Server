@@ -4,27 +4,8 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var cors = require('cors');
+//var cors = require('cors');
 
-const allowedOrigins = [
-    'capacitor://localhost',
-    'ionic://localhost',
-    'http://localhost',
-    'http://localhost:8080',
-    'http://localhost:8100'
-];
-
-const corsOptions = {
-    origin: (origin, callback) => {
-        if (allowedOrigins.includes(origin) || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Origin not allowed by CORS'));
-        }
-    }
-}
-
-app.options('*', cors(corsOptions));
 
 // Configuration
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/users");
