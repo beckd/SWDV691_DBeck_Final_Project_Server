@@ -7,7 +7,7 @@ var methodOverride = require('method-override');
 var cors = require('cors');
 
 // Configuration
-mongoose.connect("mongodb://localhost/users");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/users");
 
 app.use(bodyParser.urlencoded({ 'extended': 'true' }));
 app.use(bodyParser.json());
@@ -93,11 +93,8 @@ app.delete('/api/users/:id', function (req, res) {
 });
 // Update a user Item
 app.put('/api/users/:id', function (req, res) {
-    const { name, health, currency } = req.body;
+    const { health, currency } = req.body;
     const user = {}
-    if (name) {
-        user['name'] = name;
-    }
     if (health) {
         user['health'] = health;
     }
@@ -106,7 +103,7 @@ app.put('/api/users/:id', function (req, res) {
     }
 
     console.log("Updating item - ", req.params.id, user);
-    User.findOneAndUpdate({ _id: req.params.id }, user, { new: true }, (err, raw) => {
+    User.findOneAndUpdate({ _id: req.params.id }, {$inc: user}, { new: true }, (err, raw) => {
         if (err) {
             return res.send(err);
         }
@@ -118,4 +115,4 @@ app.put('/api/users/:id', function (req, res) {
 // making a note here.
 
 // Start app and listen on port 8080  
-app.listen(8080); console.log("user server listening on port  - 8080");
+app.listen(process.env.PORT || 8080); console.log("user server listening on port  - ", (process.env.PORT || 8080));
