@@ -4,7 +4,7 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-//var cors = require('cors');
+var cors = require('cors');
 
 
 // Configuration
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ 'extended': 'true' }));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
-//app.use(cors());
+app.use(cors());
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
