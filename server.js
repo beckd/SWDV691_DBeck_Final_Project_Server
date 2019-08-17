@@ -121,4 +121,4 @@ app.put('/api/users/:id', function (req, res) {
 // making a note here.
 
 // Start app and listen on port 8080  
-app.listen(process.env.PORT || 8080); console.log("user server listening on port  - ", (process.env.PORT || 8080));
+app.listen(process.env.PORT || 8080, () => console.log("Grocery server listening on port  - ", (process.env.PORT || 8080)));
