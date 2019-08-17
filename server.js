@@ -1,8 +1,4 @@
-import express from 'express';
-import { connect, model } from 'mongoose';
-import { urlencoded, json } from 'body-parser';
-import methodOverride from 'method-override';
-import cors from 'cors';
+
 // Set up
 var express = require('express');
 var app = express();
@@ -21,12 +17,12 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 app.use(cors());
 
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'DELETE, POST, PUT');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-});
+});*/
 
 // Model
 var User = mongoose.model('User', {
