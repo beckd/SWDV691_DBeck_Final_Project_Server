@@ -1,12 +1,11 @@
-
 // Set up
-var express = require('express');
-var app = express();
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var cors = require('cors');
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const cors = require('cors');
 
+const app = express();
 
 // Configuration
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/users");
@@ -25,7 +24,7 @@ app.use(cors());
 });*/
 
 // Model
-var User = mongoose.model('User', {
+const User = mongoose.model('User', {
     name: String,
     health: Number,
     currency: Number
@@ -117,4 +116,4 @@ app.put('/api/users/:id', function (req, res) {
 // making a note here.
 
 // Start app and listen on port 8080  
-app.listen(process.env.PORT || 8080, () => console.log("Grocery server listening on port  - ", (process.env.PORT || 8080)));
+app.listen(process.env.PORT || 8080, () => console.log("Users server listening on port  - ", (process.env.PORT || 8080)));
